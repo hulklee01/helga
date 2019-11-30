@@ -1,10 +1,12 @@
 import http.server
+import sqlite3
 
-class RequstHandler(http.server.BaseHTTPRequestHandler):
+class RequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_PUT(self):
-
+        
         file = open('temp', 'w')
+        
         line = self.rfile.peek().decode()
 
         for l in line:
@@ -14,7 +16,7 @@ class RequstHandler(http.server.BaseHTTPRequestHandler):
         
 
 if __name__ == "__main__":
-    handler = RequstHandler
+    handler = RequestHandler
     address = ('', 8000)
 
     server = http.server.HTTPServer(address, handler)
